@@ -37,7 +37,7 @@ Set template location, ID of fields used to name the output document in case of 
 - Simple java application to configure and generate documents\
 java -jar ../dist/nomabip.jar -config ./config/config.properties
 - Encrypt password for config file\
-java -jar ../dist/nomabip.jar -password $1
+java -jar ../dist/nomabip.jar -password \<PASSWORD>
 - Generate documents\
 java -jar ../dist/nomabip.jar -run ./config/config.properties \<TEMPLATE> \<DOCUMENT_NAME> \<MODE> \<DOCUMENT_ID> 
 
