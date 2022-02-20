@@ -16,6 +16,17 @@ Nothing to install, only to use. Samples scripts are provided into the test dire
 | Parameter     | Description                       |
 | ---           | ---                               |
 | cmdGS         | Call ghostscript to transform PDF after generation (ie, version 1.6 to 1.5)   |
+| runGS         | Call GS script Y/N |
+| xdo           | Settings for fonts, subtemplate directory... |
+| appHome       | Running script directory  |
+| burstOutput   | Output directory for bursting documents    |
+| singleOutput  | Output directory for single mode  |
+| processHome   | Process directory    |
+| dirOutput     | Temp Output directory    |
+| copyXSL       | XSL transformation to generate copies |
+| routageXSL    | Used for JD Edwards to copy back into the Printqueue   |
+| updateDB      | Update Oracle database (Y/N) with index and logs  |
+
 
 
 
