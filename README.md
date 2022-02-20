@@ -41,3 +41,8 @@ java -jar ../dist/nomabip.jar -password \<PASSWORD>
 - Generate documents\
 java -jar ../dist/nomabip.jar -run ./config/config.properties \<TEMPLATE> \<DOCUMENT_NAME> \<MODE> \<DOCUMENT_ID> 
 
+## Screenshot
+
+<img width="720" alt="image" src="https://user-images.githubusercontent.com/11517744/154859158-ff1b3ce5-90d0-4f2a-81f9-9bf3f6ff7210.png">
+
+
