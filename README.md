@@ -3,7 +3,7 @@
 
 ## Functionalities
 This api was initially developped to integrate easely JDEdwards and BI Publisher regardless of JDEdwards Tools Release.
-Nothing to install, only to use. Samples scripts are provided into the test directory.
+Nothing to install, only to use. Samples scripts are provided into the test directory. It can now be used for any spool with or without JD Edwards (BI Publisher license is needed).
 - Generate PDF and XML files simultaneously from a xml spool
 - Burst or single mode
 - Number of CPU for parallel processing and improve performance
@@ -28,5 +28,16 @@ Nothing to install, only to use. Samples scripts are provided into the test dire
 | updateDB      | Update Oracle database (Y/N) with index and logs  |
 
 
+## Template Settings
 
+Set template location, ID of fields used to name the output document in case of bursting and mandatory fields when update database is on.
+
+## Usage
+
+- Simple java application to configure and generate documents
+java -jar ../dist/nomabip.jar -config ./config/config.properties
+- Encrypt password for config file
+java -jar ../dist/nomabip.jar -password $1
+- Generate documents
+java -jar ../dist/nomabip.jar -run ./config/config.properties <TEMPLATE> <DOCUMENT_NAME> <MODE> <DOCUMENT_ID> 
 
