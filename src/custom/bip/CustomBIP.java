@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2018 NOMANA-IT and/or its affiliates.
+ * All rights reserved. Use is subject to license terms.
+ *
+ * @author fblettner
+ */
 package custom.bip;
 
 import java.io.*;
