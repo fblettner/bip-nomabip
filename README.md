@@ -2,7 +2,7 @@
 ### Built with VSCode and JDK 1.8
 
 ## Functionalities
-This api was initially developped to integrate easely JDEdwards and BI Publisher regardless of JDEdwards Tools Release.\
+This api was initially developed to integrate easely JDEdwards and BI Publisher regardless of JDEdwards Tools Release.\
 Nothing to install, only to use. Samples scripts are provided into the test directory. It can now be used for any spool with or without JD Edwards (BI Publisher license is needed).
 - Generate PDF and XML files simultaneously from a xml spool
 - Burst or single mode
