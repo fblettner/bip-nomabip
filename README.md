@@ -43,6 +43,6 @@ java -jar ../dist/nomabip.jar -run ./config/config.properties \<TEMPLATE> \<DOCU
 
 ## Screenshot
 
-<img width="720" alt="image" src="https://user-images.githubusercontent.com/11517744/154859158-ff1b3ce5-90d0-4f2a-81f9-9bf3f6ff7210.png">
+<img width="360" alt="image" src="https://user-images.githubusercontent.com/11517744/154859158-ff1b3ce5-90d0-4f2a-81f9-9bf3f6ff7210.png">
 
-
+![image](https://user-images.githubusercontent.com/11517744/154859221-209856d4-a922-404b-8fa7-56fecc305a58.png)
