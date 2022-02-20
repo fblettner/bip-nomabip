@@ -15,6 +15,7 @@ Nothing to install, only to use. Samples scripts are provided into the test dire
 
 | Parameter     | Description                       |
 | ---           | ---                               |
+| cmdGS         | Call ghostscript to transform PDF after generation (ie, version 1.6 to 1.5)   |
 
 
 
