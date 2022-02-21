@@ -224,11 +224,6 @@ import oracle.xdo.template.FOProcessor;
                 String datePiece = getNodeString(pDatePiece, element);
                 String dateEcheance = getNodeString(pDateEcheance, element);
                 String codeRoutage = getNodeString(pCodeRoutage, element);
-                if (activite.equals("GAZNAT") ||activite.equals("ISC")) {
-                    String numClientTmp = "00000000"+numClient;
-                    numClient = "GN"+numClientTmp.substring( 0+numClient.length(),8+numClient.length());
-                }
-
                
                 // INSERTION F564230 du document traité
                 String sql = "INSERT INTO "+ pSchema+"."+pTableLog+" (FEDOC, FEDCT, FEKCO, FEAA10, FEAA20, FEALKY, FEAEXP, FEIVD, FEARDU, FEUPMJ, FEPID, FEVERS, FEUSER, FEJOBN, FEUPMT, FEWDS1,FEEV01) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -278,15 +273,9 @@ import oracle.xdo.template.FOProcessor;
                 return true;
             try {
                 String numClient = getNodeString(pNumClient, element);
-//                String montant = getNodeString(pMontant, element);
                 String datePiece = getNodeString(pDatePiece, element);
                 String dateEcheance = getNodeString(pDateEcheance, element);
-                String codeRoutage = getNodeString(pCodeRoutage, element);
-                if (activite.equals("GAZNAT") ||activite.equals("ISC")) {
-                    String numClientTmp = "00000000"+numClient;
-                    numClient = "GN"+numClientTmp.substring( 0+numClient.length(),8+numClient.length());
-                }
-             
+                String codeRoutage = getNodeString(pCodeRoutage, element);             
                 
                 // INSERTION F564230 du document traité
                 String sql = "INSERT INTO "+ pSchema+"."+pTableErr+" (FEDOC, FEDCT, FEKCO, FEAA10, FEAA20, FEALKY, FEAEXP, FEIVD, FEARDU, FEUPMJ, FEPID, FEVERS, FEUSER, FEJOBN, FEUPMT, FEWDS1,FEERROR,FEV01) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
