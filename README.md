@@ -1,4 +1,7 @@
 # JAVA package with Oracle BI Publisher API
+
+Go to https://docs.nomana-it.fr/bipublisher/bip-api/nomabip for documentation
+
 ### Built with VSCode and JDK 1.8
 
 ## Functionalities
@@ -10,40 +13,3 @@ Nothing to install, only to use. Samples scripts are provided into the test dire
 - Add Ghostscript for PDF compatibility
 - Document indexation and errors into an Oracle Database (optional)
 - Integrate Java class NOMABC to print Barcode 128 (see github repository)
-
-## Global Settings
-
-| Parameter     | Description                       |
-| ---           | ---                               |
-| cmdGS         | Call ghostscript to transform PDF after generation (ie, version 1.6 to 1.5)   |
-| runGS         | Call GS script Y/N |
-| xdo           | Settings for fonts, subtemplate directory... |
-| appHome       | Running script directory  |
-| burstOutput   | Output directory for bursting documents    |
-| singleOutput  | Output directory for single mode  |
-| processHome   | Process directory    |
-| dirOutput     | Temp Output directory    |
-| copyXSL       | XSL transformation to generate copies |
-| routageXSL    | Used for JD Edwards to copy back into the Printqueue   |
-| updateDB      | Update Oracle database (Y/N) with index and logs  |
-
-
-## Template Settings
-
-Set template location, ID of fields used to name the output document in case of bursting and mandatory fields when update database is on.
-
-## Usage
-
-- Simple java application to configure and generate documents\
-java -jar ../dist/nomabip.jar -config ./config/config.properties
-- Encrypt password for config file\
-java -jar ../dist/nomabip.jar -password \<PASSWORD>
-- Generate documents\
-java -jar ../dist/nomabip.jar -run ./config/config.properties \<TEMPLATE> \<DOCUMENT_NAME> \<MODE> \<DOCUMENT_ID> 
-
-## Screenshot
-
-<img width="360" alt="image" src="https://user-images.githubusercontent.com/11517744/154859158-ff1b3ce5-90d0-4f2a-81f9-9bf3f6ff7210.png">
-
-<img width="360" alt="image" src="https://user-images.githubusercontent.com/11517744/154859221-209856d4-a922-404b-8fa7-56fecc305a58.png">
-
