@@ -3,7 +3,7 @@
  * All rights reserved. Use is subject to license terms.
  *
  * @author fblettner
- * Modified by RVI
+ * Modified by RVI: Add XML source into Table blob
  */
 package custom.bip;
 
