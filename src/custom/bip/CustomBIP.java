@@ -212,7 +212,35 @@ import oracle.xdo.template.FOProcessor;
             }
             
         }
-        
+
+        /*
+         * Author : INETUM RVI - Pour Antargaz Energies - Mantis 5722
+         * Date : 02/10/2023
+         * Description : Méthode permettant de convertir un Node en Blob
+         */
+        private Blob convertNodeToBlob(Connection conn, Node n) throws Exception {
+            Blob blobData = conn.createBlob();
+            try {
+                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                Transformer transformer;
+                transformer = transformerFactory.newTransformer();
+
+                DOMSource source = new DOMSource(n);
+                StreamResult result = new StreamResult(new StringWriter());
+                transformer.transform(source, result);
+
+                String strObject = result.getWriter().toString();
+
+                byte[] byteData = strObject.getBytes("UTF-8");//Better to specify encoding
+                
+                blobData.setBytes(1, byteData);
+                
+            }
+            catch (TransformerException | UnsupportedEncodingException  | SQLException e) {
+                throw new Exception("Thread interrompu ; cause / "+ e.getMessage());
+            }
+            return blobData;
+        }
         
         private Boolean insertDocumentSQL(Connection conn, String docID,String activite, String typePiece, String typeJDE, String societeJDE, Element element)  {
             
@@ -226,7 +254,11 @@ import oracle.xdo.template.FOProcessor;
                 String codeRoutage = getNodeString(pCodeRoutage, element);
                
                 // INSERTION F564230 du document traité
-                String sql = "INSERT INTO "+ pSchema+"."+pTableLog+" (FEDOC, FEDCT, FEKCO, FEAA10, FEAA20, FEALKY, FEAEXP, FEIVD, FEARDU, FEUPMJ, FEPID, FEVERS, FEUSER, FEJOBN, FEUPMT, FEWDS1,FEEV01) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+                /* INETUM RVI - ANTARGAZ - Mantis 5722 - On ajoute l'alimentation de la nouvelle colonne F564230.FETXFT - 02/10/2023 */
+                //String sql = "INSERT INTO "+ pSchema+"."+pTableLog+" (FEDOC, FEDCT, FEKCO, FEAA10, FEAA20, FEALKY, FEAEXP, FEIVD, FEARDU, FEUPMJ, FEPID, FEVERS, FEUSER, FEJOBN, FEUPMT, FEWDS1, FEEV01) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                String sql = "INSERT INTO "+ pSchema+"."+pTableLog+" (FEDOC, FEDCT, FEKCO, FEAA10, FEAA20, FEALKY, FEAEXP, FEIVD, FEARDU, FEUPMJ, FEPID, FEVERS, FEUSER, FEJOBN, FEUPMT, FEWDS1, FEEV01, FETXFT) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                
                 PreparedStatement stmt = conn.prepareStatement(sql);
                 stmt.setInt(1,Integer.parseInt(docID));
                 stmt.setString(2,typeJDE);
@@ -251,12 +283,16 @@ import oracle.xdo.template.FOProcessor;
                 stmt.setInt(15,Integer.parseInt(sdf3.format(date)));
                 stmt.setString(16,pFileName);
                 stmt.setString(17,codeRoutage);
+                /* INETUM RVI - ANTARGAZ - Mantis 5722 - On ajoute l'alimentation de la nouvelle colonne F564230.FETXFT - 02/10/2023 */
+                stmt.setBlob(18, convertNodeToBlob(conn, element));
                
                 stmt.executeUpdate();
                 
                 stmt.close();
             }
-            catch (NumberFormatException | SQLException | ParseException e)
+            /* INETUM RVI - ANTARGAZ - Mantis 5722 - On récupère une Exception plus générale suite à l'ajout de l'appel à convertNodeToBlob() */
+            //catch (NumberFormatException | SQLException | ParseException e)
+            catch (Exception e)
             {
                 insertErrorSQL(conn,docID,activite,typePiece,typeJDE,societeJDE, (Element)element,e.getMessage());
                return false;
@@ -278,7 +314,9 @@ import oracle.xdo.template.FOProcessor;
                 String codeRoutage = getNodeString(pCodeRoutage, element);             
                 
                 // INSERTION F564230 du document traité
-                String sql = "INSERT INTO "+ pSchema+"."+pTableErr+" (FEDOC, FEDCT, FEKCO, FEAA10, FEAA20, FEALKY, FEAEXP, FEIVD, FEARDU, FEUPMJ, FEPID, FEVERS, FEUSER, FEJOBN, FEUPMT, FEWDS1,FEERROR,FEV01) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+                String sql = "INSERT INTO "+ pSchema+"."+pTableErr+" (FEDOC, FEDCT, FEKCO, FEAA10, FEAA20, FEALKY, FEAEXP, FEIVD, FEARDU, FEUPMJ, FEPID, FEVERS, FEUSER, FEJOBN, FEUPMT, FEWDS1, FEERROR, FEV01) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                
                 try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                     stmt.setInt(1,Integer.parseInt(docID));
                     stmt.setString(2,typeJDE);
@@ -317,6 +355,8 @@ import oracle.xdo.template.FOProcessor;
             return true;
             
         }
+
+
         
 
         
