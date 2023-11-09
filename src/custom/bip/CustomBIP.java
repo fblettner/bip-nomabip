@@ -214,7 +214,7 @@ import oracle.xdo.template.FOProcessor;
         }
 
         /*
-         * Author : INETUM RVI - Pour Antargaz Energies - Mantis 5722
+         * Author : RVI
          * Date : 02/10/2023
          * Description : Méthode permettant de convertir un Node en Blob
          */
@@ -255,7 +255,7 @@ import oracle.xdo.template.FOProcessor;
                
                 // INSERTION F564230 du document traité
 
-                /* INETUM RVI - ANTARGAZ - Mantis 5722 - On ajoute l'alimentation de la nouvelle colonne F564230.FETXFT - 02/10/2023 */
+                /* RVI - On ajoute l'alimentation de la nouvelle colonne F564230.FETXFT - 02/10/2023 */
                 //String sql = "INSERT INTO "+ pSchema+"."+pTableLog+" (FEDOC, FEDCT, FEKCO, FEAA10, FEAA20, FEALKY, FEAEXP, FEIVD, FEARDU, FEUPMJ, FEPID, FEVERS, FEUSER, FEJOBN, FEUPMT, FEWDS1, FEEV01) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 String sql = "INSERT INTO "+ pSchema+"."+pTableLog+" (FEDOC, FEDCT, FEKCO, FEAA10, FEAA20, FEALKY, FEAEXP, FEIVD, FEARDU, FEUPMJ, FEPID, FEVERS, FEUSER, FEJOBN, FEUPMT, FEWDS1, FEEV01, FETXFT) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 
@@ -283,14 +283,14 @@ import oracle.xdo.template.FOProcessor;
                 stmt.setInt(15,Integer.parseInt(sdf3.format(date)));
                 stmt.setString(16,pFileName);
                 stmt.setString(17,codeRoutage);
-                /* INETUM RVI - ANTARGAZ - Mantis 5722 - On ajoute l'alimentation de la nouvelle colonne F564230.FETXFT - 02/10/2023 */
+                /* RVI - On ajoute l'alimentation de la nouvelle colonne F564230.FETXFT - 02/10/2023 */
                 stmt.setBlob(18, convertNodeToBlob(conn, element));
                
                 stmt.executeUpdate();
                 
                 stmt.close();
             }
-            /* INETUM RVI - ANTARGAZ - Mantis 5722 - On récupère une Exception plus générale suite à l'ajout de l'appel à convertNodeToBlob() */
+            /* RVI - On récupère une Exception plus générale suite à l'ajout de l'appel à convertNodeToBlob() */
             //catch (NumberFormatException | SQLException | ParseException e)
             catch (Exception e)
             {
