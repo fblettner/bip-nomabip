@@ -13,3 +13,4 @@ Nothing to install, only to use. Samples scripts are provided into the test dire
 - Add Ghostscript for PDF compatibility
 - Document indexation and errors into an Oracle Database (optional)
 - Integrate Java class NOMABC to print Barcode 128 (see github repository)
+
