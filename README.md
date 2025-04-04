@@ -1,6 +1,6 @@
 # JAVA package with Oracle BI Publisher API
 
-Go to https://docs.nomana-it.fr/bipublisher/bip-api/nomabip for documentation
+Go to [https://docs.nomana-it.fr/bipublisher/bip-api/nomabip](https://docs.nomana-it.fr/api/jde-api/jdebip/) for documentation
 
 ### Built with VSCode and JDK 1.8
 
